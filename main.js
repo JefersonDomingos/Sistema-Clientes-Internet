@@ -32,11 +32,18 @@ const createClient = (client) => {
 const readClient = () => getLocalStorage();
 
 //update
-const updateClient = (index, cliente) => {
-    const dbClient = getLocalStorage();
-    dbClient[index]= cliente;
+const updateClient = (index, client) => {
+    const dbClient = readClient();
+    dbClient[index] = client;
     setLocalStorage(dbClient);
 } 
+
+//delete
+const deleteClient = (index) => {
+    const dbClient = readClient();
+    dbClient.splice(index,1);
+    setLocalStorage(dbClient);
+}
 
 //Eventos
 document.getElementById('cadastrarCliente')
