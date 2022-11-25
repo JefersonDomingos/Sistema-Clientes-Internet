@@ -9,8 +9,8 @@ const closeModal = () => document.getElementById('modal')
 //CRUD : create, read, update, delete.
 
 const tempClient = {
-    nome: 'teste',
-    email: 'teste@email.com',
+    nome: 'Jéferson',
+    email: 'jeferson@email.com',
     celular: '31321112123',
     cidade: 'Urucânia-MG',
     loginPPPoE: 'jefersondmartins',
@@ -18,11 +18,25 @@ const tempClient = {
     plano: '300mb'
 }
 
+const getLocalStorage = () => JSON.parse(localStorage.getItem('db_client')) ?? [];
+const setLocalStorage = (dbClient) => localStorage.setItem('db_client', JSON.stringify(dbClient));
+
+//create
 const createClient = (client) => {
-    const db_client = JSON.parse(localStorage.getItem('db_client'));
-    db_client.push(client);
-    localStorage.setItem('db_client', JSON.stringify(db_client));
+    const dbClient = getLocalStorage();
+    dbClient.push(client);
+    setLocalStorage(dbClient);
 }
+
+//read
+const readClient = () => getLocalStorage();
+
+//update
+const updateClient = (index, cliente) => {
+    const dbClient = getLocalStorage();
+    dbClient[index]= cliente;
+    setLocalStorage(dbClient);
+} 
 
 //Eventos
 document.getElementById('cadastrarCliente')
