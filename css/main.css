@@ -52,6 +52,24 @@ footer{
     padding: 20px;
 }
 
+@media (max-width:1200px){
+    header{
+        position:fixed;
+        width:100%;
+    }
+    .header-title{
+        font-size: 1.5rem;
+    }
+
+    main{
+        padding: 0;
+        margin: 20px 0 0 0;
+        width:100%;
+        box-shadow: none;
+    }
+
+}
+
 @media (max-width:480px){
     header{
         position:fixed;
@@ -68,3 +86,4 @@ footer{
         box-shadow: none;
     }
 }
+
