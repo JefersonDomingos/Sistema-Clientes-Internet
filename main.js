@@ -62,10 +62,18 @@ const saveClient = () => {
            id: document.getElementById('id').value,
            plano: document.getElementById('plano').value
         }
-        createClient(client);
-        updateTable();
-        closeModal();
-        console.log('salvo com sucesso');
+        const index = document.getElementById('nome').dataset.index;
+        if(index == 'new'){
+            createClient(client);
+            updateTable();
+            closeModal();
+
+        }else{
+            updateClient(index,client);
+            updateTable();
+            closeModal();
+        }
+       
     }
 }
 
@@ -79,7 +87,7 @@ const createRow = (client,index) => {
     <td>${client.cidade}</td>
     <td>${client.loginPPPoE}</td>
     <td>${client.id}</td>
-    <td>${client.plano}</td>
+    <td>${client.plano  + ' mb'}</td>
     <td>
         <button type="button" class="button green" id="edit-${index}">Editar</button>
         <button type="button" class="button red" id="delete-${index}">Excluir</button>
@@ -108,10 +116,12 @@ const fillFields = (client) => {
     document.getElementById('login').value = client.loginPPPoE;
     document.getElementById('id').value = client.id;
     document.getElementById('plano').value = client.plano;
+    document.getElementById('nome').dataset.index = client.index;
 } 
 
 const editClient = (index) => {
     const client = readClient()[index];
+    client.index = index;
     openModal();
     fillFields(client);
 }
@@ -125,7 +135,12 @@ const editDelete = (event) => {
         if(action == 'edit'){
             editClient(index);
         }else {
-            console.log('deletando o cliente');
+            const client = readClient()[index];
+            const response = confirm(`Deseja Realmente excluir ${client.nome}`);
+            if(response){
+                deleteClient(index);
+                updateTable(index);
+            }
         }
     }
 } 
