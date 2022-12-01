@@ -26,9 +26,17 @@
     background-color: var(--secundary-color);
 }
 
+@media(max-width:1200px){
+    .records{
+        border-spacing: 5px;
+        margin-top: 120px;
+    }
+}
+
 @media(max-width:480px){
     .records{
         border-spacing: 5px;
+        margin-top: 80px;
     }
     .records thead{
         display:none;

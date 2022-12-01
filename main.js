@@ -1,24 +1,14 @@
 'use strict'
 
 const openModal = () => document.getElementById('modal')
-    .classList.add('active')
+    .classList.add('active');
 
 const closeModal = () => {
     clearFields();
     document.getElementById('modal').classList.remove('active');
-}
+};
 
 //CRUD : create, read, update, delete.
-
-const tempClient = {
-    nome: 'Jéferson',
-    email: 'jeferson@email.com',
-    celular: '31321112123',
-    cidade: 'Urucânia-MG',
-    loginPPPoE: 'jefersondmartins',
-    id: '5',
-    plano: '300mb'
-}
 
 const getLocalStorage = () => JSON.parse(localStorage.getItem('db_client')) ?? [];
 const setLocalStorage = (dbClient) => localStorage.setItem('db_client', JSON.stringify(dbClient));
