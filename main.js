@@ -1,7 +1,8 @@
 'use strict'
 
-const openModal = () => document.getElementById('modal')
-    .classList.add('active');
+const openModal = () => {
+    document.getElementById('modal').classList.add('active');
+}
 
 const closeModal = () => {
     clearFields();
@@ -145,6 +146,10 @@ const editDelete = (event) => {
     }
 } 
 
+const cancelar = () => {
+    location.reload();
+}
+
 updateTable();
 
 //Eventos
@@ -152,10 +157,13 @@ document.getElementById('cadastrarCliente')
     .addEventListener('click', openModal)
 
 document.getElementById('modalClose')
-    .addEventListener('click', closeModal)
+    .addEventListener('click', cancelar);
 
 document.getElementById('salvar')
     .addEventListener('click', saveClient);
 
 document.querySelector('#tableClient>tbody')
     .addEventListener('click', editDelete);
+
+document.getElementById('cancelar')
+    .addEventListener('click', cancelar);
