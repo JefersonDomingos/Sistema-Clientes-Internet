@@ -146,18 +146,19 @@ const editDelete = (event) => {
     }
 } 
 
-const cancelar = () => {
-    location.reload();
+const newClient = () => {
+    document.getElementById('nome').dataset.index = "new";
+    openModal();
 }
 
 updateTable();
 
 //Eventos
 document.getElementById('cadastrarCliente')
-    .addEventListener('click', openModal)
+    .addEventListener('click',newClient);
 
 document.getElementById('modalClose')
-    .addEventListener('click', cancelar);
+    .addEventListener('click', closeModal);
 
 document.getElementById('salvar')
     .addEventListener('click', saveClient);
@@ -166,4 +167,4 @@ document.querySelector('#tableClient>tbody')
     .addEventListener('click', editDelete);
 
 document.getElementById('cancelar')
-    .addEventListener('click', cancelar);
+    .addEventListener('click', closeModal);
